@@ -12,23 +12,24 @@ servidor.on('request', (req, res) => {
     // si observe es distinto de cero
     if (req.headers.Observe !== 0) {
       console.log("Nuevo valor sin observe...");
-      res.code = 2.05;
+      res.code = '2.05';
       payload = Math.floor(Math.random() * 100);
-      res.end(payload.toString());
-    } else {
-      // si observe es distinto de cero
-      const intervalo = setInterval(() => {
-        console.log("Nuevo valor...");
-        res.code = 2.05;
-        payload = Math.floor(Math.random() * 100);
-        res.write(payload.toString());
-      }, 1000);
-
-      res.on('finish', () => {
-        clearInterval(intervalo);
-        console.log('Final');
-      });
+      return res.end(payload.toString());
     }
+    
+    // si observe es cero
+    const intervalo = setInterval(() => {
+      console.log("Nuevo valor...");
+      res.code = '2.05';
+      payload = Math.floor(Math.random() * 100);
+      res.write(payload.toString());
+    }, 1000);
+
+    res.on('finish', () => {
+      console.log("Fin de la observación...");
+      clearInterval(intervalo);
+    });
+
   } else {
     res.code = '4.04';
     res.end("URL incorrecto");

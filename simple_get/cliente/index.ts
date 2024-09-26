@@ -3,9 +3,8 @@ import * as coap from 'coap';
 // Realiza una solicitud GET a un servidor CoAP
 const requerimiento = coap.request({
   method: 'GET',
-  pathname: '/holas'
+  pathname: '/hola'
 });
-
 
 // Manejador de la respuesta
 requerimiento.on('response', (res) => {

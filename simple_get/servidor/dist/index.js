@@ -24,16 +24,27 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const coap = __importStar(require("coap"));
-// Realiza una solicitud GET a un servidor CoAP
-const requerimiento = coap.request({
-    method: 'GET',
-    pathname: '/holas'
+// Crea un servidor CoAP
+const servidor = coap.createServer();
+// Manejador para la ruta '/example-resource'
+servidor.on('request', (req, res) => {
+    // verifica la url y el tipo de método
+    if (req.url === '/hola' && req.method === 'GET') {
+        // Genera la respuesta
+        const payload = 'Hola, cliente CoAP!';
+        // Envía la respuesta al cliente 
+        // al enviar contenido se pasa 2.05
+        // 2.03 se envía cuando no hay contenido
+        res.code = '2.05';
+        res.end(payload);
+    }
+    else {
+        // porque consideran es conveniente agregar esto
+        res.code = '4.04';
+        res.end("URL incorrecto");
+    }
 });
-// Manejador de la respuesta
-requerimiento.on('response', (res) => {
-    console.log('Respuesta del servidor CoAP:');
-    console.log('Código:', res.code);
-    console.log('Payload:', res.payload.toString());
+// Inicia el servidor en el puerto 5683
+servidor.listen(() => {
+    console.log('Servidor CoAP iniciado en el puerto 5683');
 });
-// Envía la solicitud al servidor
-requerimiento.end();

@@ -1,12 +1,11 @@
 import * as coap from 'coap';
 
 // Realiza una solicitud GET a un servidor CoAP
-const requerimiento = coap.request({
+let requerimiento = coap.request({
   method: 'GET',
   pathname: '/light',
-  observe: false
+  observe: true
 });
-
 
 // Manejador de la respuesta
 requerimiento.on('response', (res) => {
@@ -19,9 +18,11 @@ requerimiento.on('response', (res) => {
   });
 });
 
+// En caso de error
 requerimiento.on('error', (error) => {
   console.error(`Error de solicitud: ${error.message}`);
 });
 
 // Envía la solicitud al servidor
 requerimiento.end();
+

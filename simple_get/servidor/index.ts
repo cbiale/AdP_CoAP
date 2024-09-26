@@ -5,12 +5,14 @@ const servidor = coap.createServer();
 
 // Manejador para la ruta '/example-resource'
 servidor.on('request', (req, res) => {
-  
+
   // verifica la url y el tipo de método
   if (req.url === '/hola' && req.method === 'GET') {
     // Genera la respuesta
     const payload = 'Hola, cliente CoAP!';
-    // Envía la respuesta al cliente
+    // Envía la respuesta al cliente 
+    // al enviar contenido se pasa 2.05
+    // 2.03 se envía cuando no hay contenido
     res.code = '2.05';
     res.end(payload);
   } else {
