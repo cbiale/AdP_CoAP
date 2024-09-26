@@ -15,3 +15,7 @@ Ejemplos con TypeScript:
 
 - [ ] Agregar al repositorio ejemplo para ESP-IDF.
 - [ ] En ejemplos `simple_get` y `simple_get_post` dar un ejemplo cercano a IoT.
+- [ ] Agregar un ejemplo con `PUT`/`POST` y `DELETE`.
+- [ ] Complementar el ejemplo de `observe` para cancelar una observación.
+- [ ] Hacer ejemplos como `simple_get` pero mostrando los distintos tipos de mensajes.
+- [ ] Realizar ejemplo de proxy, transferencia de bloques y respuesta postergada.
