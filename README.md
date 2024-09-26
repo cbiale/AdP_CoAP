@@ -13,5 +13,5 @@ Ejemplos con TypeScript:
 
 ## A futuro
 
-[] Agregar al repositorio ejemplo para ESP-IDF.
-[] En ejemplos `simple_get` y `simple_get_post` dar un ejemplo cercano a IoT.
+- [ ] Agregar al repositorio ejemplo para ESP-IDF.
+- [ ] En ejemplos `simple_get` y `simple_get_post` dar un ejemplo cercano a IoT.
