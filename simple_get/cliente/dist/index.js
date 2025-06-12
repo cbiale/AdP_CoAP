@@ -27,7 +27,7 @@ const coap = __importStar(require("coap"));
 // Realiza una solicitud GET a un servidor CoAP
 const requerimiento = coap.request({
     method: 'GET',
-    pathname: '/hola'
+    pathname: '/chau'
 });
 // Manejador de la respuesta
 requerimiento.on('response', (res) => {
